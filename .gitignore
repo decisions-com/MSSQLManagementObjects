@@ -1,0 +1,11 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MSSQLManagementObjects.zip
+/.vs/decisions-mod-skeleton/v16/.suo
+/.vs/MSSQLManagementObjects/v16/Server/sqlite3
+/.vs
+/MSSQLManagementObjects/bin/Debug
+/MSSQLManagementObjects/obj/Debug
+/MSSQLManagementObjects/obj/Release

@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSQLManagementObjects", "MSSQLManagementObjects\MSSQLManagementObjects.csproj", "{A5071EA8-A2EE-4638-B91F-C95F93C3D172}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{9CE684AF-BC14-4528-A0A9-F7717FB5DC8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B158309F-5409-44C4-837B-856275A6862E}"
+	ProjectSection(SolutionItems) = preProject
+		Runner.ps1 = Runner.ps1
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5071EA8-A2EE-4638-B91F-C95F93C3D172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5071EA8-A2EE-4638-B91F-C95F93C3D172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5071EA8-A2EE-4638-B91F-C95F93C3D172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5071EA8-A2EE-4638-B91F-C95F93C3D172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE684AF-BC14-4528-A0A9-F7717FB5DC8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE684AF-BC14-4528-A0A9-F7717FB5DC8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE684AF-BC14-4528-A0A9-F7717FB5DC8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE684AF-BC14-4528-A0A9-F7717FB5DC8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B975D58-5D99-4471-8FDA-60F4B96016EC}
+	EndGlobalSection
+EndGlobal

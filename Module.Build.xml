@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CreateModuleInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Clients>
+    <DotNetCoreDll>C:\Program Files\Decisions\Decisions Services Manager\framework\CoreServicesClients.Net.dll</DotNetCoreDll>
+    <DotNetFrontendFrameworkDll>C:\Program Files\Decisions\Decisions Services Manager\framework\DecisionsFramework.Net.dll</DotNetFrontendFrameworkDll>
+    <SLCoreDll>..\..\lib\CoreServicesClients.SL.dll</SLCoreDll>
+    <SLFrontendFrameworkDll>..\..\output\bincore\DecisionsFramework.SL.dll</SLFrontendFrameworkDll>
+    <SilverLightsSDKAssembliesPath>C:\Program Files\Decisions\Decisions Services Manager\SilverLightAssemblies</SilverLightsSDKAssembliesPath>
+    <References>
+      <string>.\lib\Microsoft.Data.Tools.Sql.BatchParser.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Assessment.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Assessment.Types.dll</string>
+      <string>.\lib\Microsoft.SqlServer.ConnectionInfo.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Dmf.Common.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Dmf.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.Assessment.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.Collector.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.CollectorEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.HadrData.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.HadrModel.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.RegisteredServers.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.SmoMetadataProvider.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.SqlParser.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.SqlScriptPublish.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.XEvent.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.XEventDbScoped.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.XEventDbScopedEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Management.XEventEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.PolicyEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.RegSvrEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.ServiceBrokerEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Smo.dll</string>
+      <string>.\lib\Microsoft.SqlServer.Smo.Notebook.dll</string>
+      <string>.\lib\Microsoft.SqlServer.SmoExtended.dll</string>
+      <string>.\lib\Microsoft.SqlServer.SqlClrProvider.dll</string>
+      <string>.\lib\Microsoft.SqlServer.SqlEnum.dll</string>
+      <string>.\lib\Microsoft.SqlServer.SqlWmiManagement.dll</string>
+      <string>.\lib\Microsoft.SqlServer.WmiEnum.dll</string>
+    </References>
+    <CopyReferenceToModule>true</CopyReferenceToModule>
+  </Clients>
+  <Resources NoComponents="true">
+    <ServicesDlls>
+      <string>.\MSSQLManagementObjects\bin\Debug\MSSQLManagementObjects.dll</string>
+    </ServicesDlls>
+    <CliDlls />
+    <WebPages />
+    <SilverlightDlls />
+    <AgentDlls />
+    <InstallScript />
+    <SqlScripts />
+    <ObjectsToImport />
+    <MsSqlScript />
+  </Resources>
+  <Version />
+  <Description>This module has steps that allow you to connect to things and use custom flow steps and rules.</Description>
+</CreateModuleInfo>
