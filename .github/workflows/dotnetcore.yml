@@ -23,5 +23,6 @@ jobs:
       run: dotnet restore
       working-directory: ./MSSQLManagementObjects
     - name: Build
+      working-directory: ./MSSQLManagementObjects
       run: dotnet build --configuration Release --no-restore
 
