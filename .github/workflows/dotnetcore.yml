@@ -11,8 +11,8 @@ jobs:
     - name: Setup Nuget.exe
       uses: warrenbuckley/Setup-Nuget@v1
     - name: Restore packages
-      run: nuget restore MSSQLManagementObjects
+      run: nuget restore
     - name: Setup MSBuild.exe
       uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build with MSBuild
-      run: msbuild  MSSQLManagementObjects -p:Configuration=Release
+      run: msbuild -p:Configuration=Release
