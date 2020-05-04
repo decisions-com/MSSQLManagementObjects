@@ -20,7 +20,7 @@ namespace MSSQLManagementObjects
             return new ServerConnection(servername, username, password);
         }
 
-        public Boolean CreateDB(ServerConnection serverConnection, string DBName)
+        public bool CreateDB(ServerConnection serverConnection, string DBName)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace MSSQLManagementObjects
             }
         }
 
-        public Boolean DeleteDB(ServerConnection serverConnection, string DBName)
+        public bool DeleteDB(ServerConnection serverConnection, string DBName)
         {
             try
             {
