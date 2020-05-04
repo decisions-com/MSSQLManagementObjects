@@ -134,7 +134,7 @@ namespace MSSQLManagementObjects
         {
             try
             {
-                int f = 1;
+              
 
                 var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
                 Database db = new Database(srv, DBName);
