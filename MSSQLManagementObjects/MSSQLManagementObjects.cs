@@ -12,7 +12,7 @@ namespace MSSQLManagementObjects
 {
 
     [AutoRegisterMethodsOnClass(true, "MSSQL")]
-    public class MSSQLManagementObjects
+    public class MSSQLManagementObjectsClass
     {
         
         public ServerConnection CreateServerConnection(string servername, string username, string password)
