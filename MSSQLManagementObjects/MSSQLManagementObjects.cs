@@ -1,4 +1,5 @@
 ﻿
+using DecisionsFramework.Design.Flow;
 using Microsoft.SqlServer.Management.Common;
 using Microsoft.SqlServer.Management.Smo;
 using System;
@@ -9,10 +10,11 @@ using System.Threading.Tasks;
 
 namespace MSSQLManagementObjects
 {
- 
+
+    [AutoRegisterMethodsOnClass(true, "MSSQL")]
     public class MSSQLManagementObjects
     {
-
+        
         public ServerConnection CreateServerConnection(string servername, string username, string password)
         {
             return new ServerConnection(servername, username, password);
