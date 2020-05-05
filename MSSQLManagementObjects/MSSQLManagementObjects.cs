@@ -20,39 +20,40 @@ namespace MSSQLManagementObjects
             return new ServerConnection(servername, username, password);
         }
 
-        public bool CreateDB(ServerConnection serverConnection, string DBName)
+        public bool CreateDB(string servername, string username, string password, string DBName)
         {
             try
             {
-
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+                var serverconnection = CreateServerConnection(servername, username, password);
+                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
                 //Define a Database object variable by supplying the server and the database name arguments in the constructor.   
                 Database db;
                 db = new Microsoft.SqlServer.Management.Smo.Database(srv, DBName);
                 //Create the database on the instance of SQL Server.   
                 db.Create();
+                serverconnection.Disconnect();
                 return true;
             }
-            catch (Exception ex2)
+            catch (Exception)
             {
-                Console.WriteLine(ex2.Message);
-                Console.WriteLine(ex2.InnerException);
+              
                 return false;
                 throw;
             }
         }
 
-        public bool DeleteDB(ServerConnection serverConnection, string DBName)
+        public bool DeleteDB(string servername, string username, string password, string DBName)
         {
             try
             {
-
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+                var serverconnection = CreateServerConnection(servername, username, password);
+                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
                 //Define a Database object variable by supplying the server and the database name arguments in the constructor.   
                 Database db;
                 db = new Microsoft.SqlServer.Management.Smo.Database(srv, DBName);
 
                 db.Drop();
+                serverconnection.Disconnect();
                 return true;
             }
             catch (Exception)
@@ -62,21 +63,22 @@ namespace MSSQLManagementObjects
             }
         }
 
-        public bool CreateSQLUser(ServerConnection serverConnection, string Username, string Password, string DBName)
+        public bool CreateSQLUser(string servername, string username, string password, string LoginUsername, string LoginPassword, string DBName)
         {
             try
             {
-                
 
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+                var serverconnection = CreateServerConnection(servername, username, password);
+                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
 
                 Database db = new Database(srv, DBName);
                 // Creating Logins  
-                Login login = new Login(srv, Username );
+                Login login = new Login(srv, LoginUsername);
                 login.LoginType = LoginType.SqlLogin;
-                login.Name = Username;
-                login.Create(Password);
+                login.Name = LoginUsername;
+                login.Create(LoginPassword);
                 login.Enable();
+                serverconnection.Disconnect();
                 return true;
                
 
@@ -93,25 +95,25 @@ namespace MSSQLManagementObjects
 
 
 
-        public bool AssignSQLUser(ServerConnection serverConnection, string Username, string Password, string DBName)
+        public bool AssignSQLUser(string servername, string username, string password, string LoginUsername, string LoginPassword, string DBName)
         {
             try
             {
-               
+                var serverconnection = CreateServerConnection(servername, username, password);
 
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
                 Database db = new Database(srv, DBName);
                 var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
 
 
-                var login = srv.Logins.OfType<Login>().Where(x => x.Name == Username).SingleOrDefault();
+                var login = srv.Logins.OfType<Login>().Where(x => x.Name == LoginUsername).SingleOrDefault();
                
                 var user = db.Users.OfType<User>()
-                       .Where(u => u.Name == Username)
+                       .Where(u => u.Name == LoginUsername)
                        .SingleOrDefault();
                 if (user == null)
                 {
-                    user = new User(database, Username);
+                    user = new User(database, LoginUsername);
                     user.Login = login.Name;
 
 
@@ -119,6 +121,7 @@ namespace MSSQLManagementObjects
                     user.Create();
                     
                 }
+                serverconnection.Disconnect();
                 return true;
 
 
@@ -130,24 +133,26 @@ namespace MSSQLManagementObjects
             }
         }
 
-        public bool AssignRole(ServerConnection serverConnection, string Username, string Role, string DBName)
+        public bool AssignRole(string servername, string username, string password, string LoginUsername, string Role, string DBName)
         {
             try
             {
-              
 
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
+                var serverconnection = CreateServerConnection(servername, username, password);
+                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
                 Database db = new Database(srv, DBName);
                 var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
 
 
-                var login = srv.Logins.OfType<Login>().Where(x => x.Name == Username).SingleOrDefault();
-                var user = new User(database, Username);
+                var login = srv.Logins.OfType<Login>().Where(x => x.Name == LoginUsername).SingleOrDefault();
+                var user = new User(database, LoginUsername);
                 user.Login = login.Name;
                 user.AddToRole(Role);
 
 
                 return true;
+
+                serverconnection.Disconnect();
             }
             catch (Exception)
             {
@@ -157,31 +162,32 @@ namespace MSSQLManagementObjects
 
         }
 
-        public bool UnAssignRole(ServerConnection serverConnection, string Username, string Role, string DBName)
-        {
-            try
-            {
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverConnection);
-                Database db = new Database(srv, DBName);
-                var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
+        //public bool UnAssignRole(string servername, string username, string password, string Username, string DBName)
+        //{
+        //    try
+        //    {
+        //        var serverconnection = CreateServerConnection(servername, username, password);
+        //        var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
+        //        Database db = new Database(srv, DBName);
+        //        var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
 
 
-                var login = srv.Logins.OfType<Login>().Where(x => x.Name == Username).SingleOrDefault();
-                var user = new User(database, Username);
-                user.Login = login.Name;
-                user.Drop();
+        //        var login = srv.Logins.OfType<Login>().Where(x => x.Name == Username).SingleOrDefault();
+        //        var user = new User(database, Username);
+        //        user.Login = login.Name;
+        //        user.Drop();
 
-                return true;
+        //        return true;
 
 
-            }
-            catch (Exception)
-            {
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
+        //        throw;
+        //    }
 
-        }
+        //}
 
 
 

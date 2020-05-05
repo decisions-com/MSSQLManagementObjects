@@ -7,8 +7,8 @@ echo Running: "%programfiles(x86)%\MSBuild\14.0\bin\msbuild.exe" build.proj
 "%programfiles(x86)%\MSBuild\14.0\bin\msbuild.exe" build.proj
 
 pause
-rem net stop "Service Host Manager Watcher"
-rem net stop "Service Host Manager"
-rem copy .\MSSQLManagementObjects.zip "c:\Program Files\Decisions\Decisions Services Manager\CustomModules" /Y
-rem net start "Service Host Manager"
+ net stop "Service Host Manager Watcher"
+net stop "Service Host Manager"
+ copy .\MSSQLManagementObjects.zip "c:\Program Files\Decisions\Decisions Services Manager\CustomModules" /Y
+net start "Service Host Manager"
 pause
