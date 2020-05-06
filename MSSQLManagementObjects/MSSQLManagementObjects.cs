@@ -85,7 +85,7 @@ namespace MSSQLManagementObjects
             }
             catch (Exception ex2)
             {
-                System.IO.File.WriteAllText("C:\templog.log", ex2.Message + " " + ex2.InnerException);
+                
                 return false;
                 throw;
             }
@@ -134,34 +134,34 @@ namespace MSSQLManagementObjects
             }
         }
 
-        public bool AssignRole(string servername, string username, string password, string LoginUsername, string Role, string DBName)
-        {
-            try
-            {
+        //public bool AssignRole(string servername, string username, string password, string LoginUsername, string Role, string DBName)
+        //{
+        //    try
+        //    {
 
-                var serverconnection = CreateServerConnection(servername, username, password);
-                var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
-                Database db = new Database(srv, DBName);
-                var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
-
-
-                var login = srv.Logins.OfType<Login>().Where(x => x.Name == LoginUsername).SingleOrDefault();
-                var user = new User(database, LoginUsername);
-                user.Login = login.Name;
-                user.AddToRole(Role);
+        //        var serverconnection = CreateServerConnection(servername, username, password);
+        //        var srv = new Microsoft.SqlServer.Management.Smo.Server(serverconnection);
+        //        Database db = new Database(srv, DBName);
+        //        var database = srv.Databases.OfType<Database>().Where(x => x.Name == DBName).Single();
 
 
-                return true;
+        //        var login = srv.Logins.OfType<Login>().Where(x => x.Name == LoginUsername).SingleOrDefault();
+        //        var user = new User(database, LoginUsername);
+        //        user.Login = login.Name;
+        //        user.AddToRole(Role);
 
-                serverconnection.Disconnect();
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
+        //        return true;
 
-        }
+        //        serverconnection.Disconnect();
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
 
         //public bool UnAssignRole(string servername, string username, string password, string Username, string DBName)
         //{
