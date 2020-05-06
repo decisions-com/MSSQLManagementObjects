@@ -83,8 +83,9 @@ namespace MSSQLManagementObjects
                
 
             }
-            catch (Exception)
+            catch (Exception ex2)
             {
+                System.IO.File.WriteAllText("C:\templog.log", ex2.Message + " " + ex2.InnerException);
                 return false;
                 throw;
             }
